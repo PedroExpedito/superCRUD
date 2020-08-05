@@ -1,0 +1,4 @@
+node_modules
+runpostgress.sh
+time.txt
+**/*.mkv
