@@ -2,12 +2,11 @@ import User from '../models/User';
 
 class SessionController {
   async store(req, res) {
-    const { email, password } = req.body;
-
-    User.create({
-      email,
-      password,
-    });
+    try {
+      await User.create(req.body);
+    } catch (err) {
+      return res.status(400).json(err);
+    }
 
     return res.json({ message: 'sucess create user' });
   }

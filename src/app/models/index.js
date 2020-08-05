@@ -14,16 +14,10 @@ class Database {
   async init() {
     this.connection = new Sequelize(DbConfig);
 
-    try {
-      await this.connection.authenticate();
-      console.log('Connection DATABASE has been established successfully.');
-    } catch (err) {
-      console.error('connection to database ERROR ERROR ERROR:', err);
-    }
     /*
     File.init(this.connection);
-    User.init(this.connection);
     User.associate(this.connection.models);
+    User.init(this.connection);
     */
 
     models.map((m) => m.init(this.connection))

@@ -1,9 +1,11 @@
 import Sequelize, { Model } from 'sequelize';
-import bcript from 'bcryptjs';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
+const saltRounds = 2;
+
 class User extends Model {
-  static int(sequelize) {
+  static init(sequelize) {
     super.init({
       name: Sequelize.STRING,
       email: Sequelize.STRING,
@@ -16,19 +18,20 @@ class User extends Model {
 
     this.addHook('beforeSave', async (user) => {
       if (user.password) {
-        this.user.password_hash = await bcript.hash(user.password, 2);
+        user.password_hash = await bcrypt.hash(user.password, saltRounds);
       }
     });
+
     // precisa ser function e não arrow function por causa do acesso ao this
     User.prototype.checkPassword = function (password) {
-      return bcript.compare(password, this.password_hash);
+      return bcrypt.compare(password, this.password_hash);
     };
 
     User.prototype.generateToken = function () {
       return jwt.sign({ id: this.id }, process.env.APP_SECRET);
     };
 
-    return User;
+    return this;
   }
 }
 
