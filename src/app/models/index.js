@@ -4,8 +4,6 @@ import User from './User';
 
 const models = [User];
 
-console.log('chego');
-
 class Database {
   constructor() {
     this.init();

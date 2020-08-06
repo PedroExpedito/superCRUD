@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 const saltRounds = 2;
 
-class User extends Model {
+export default class User extends Model {
   static init(sequelize) {
     super.init({
       name: Sequelize.STRING,
@@ -22,17 +22,14 @@ class User extends Model {
       }
     });
 
-    // precisa ser function e não arrow function por causa do acesso ao this
-    User.prototype.checkPassword = function (password) {
+    this.prototype.checkPassword = function (password) {
       return bcrypt.compare(password, this.password_hash);
     };
 
-    User.prototype.generateToken = function () {
+    this.prototype.generateToken = function () {
       return jwt.sign({ id: this.id }, process.env.APP_SECRET);
     };
 
-    return this;
+    return User;
   }
 }
-
-export default User;
