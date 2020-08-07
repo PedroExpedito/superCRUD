@@ -1,9 +1,9 @@
 import * as Yup from 'yup';
 import User from '../models/User';
 
-class SessionController {
+class RegisterController {
   async store(req, res) {
-    const { email, password } = req.body;
+    const { email } = req.body;
 
     const schema = Yup.object().shape({
       name: Yup.string().required().min(2).max(256),
@@ -18,16 +18,18 @@ class SessionController {
 
     const user = await User.findOne({ where: { email } });
 
-    if (!user) {
-      return res.status(404).json({ message: 'user not found' });
+    if (user) {
+      return res.status(400).json({ message: 'user already registered' });
     }
 
-    if (!(await user.checkPassword(password))) {
-      return res.status(401).json({ message: 'invalid password' });
+    try {
+      User.create(req.body);
+    } catch (err) {
+      res.status(501).json();
     }
 
-    return res.json({ message: 'sucess', token: user.generateToken() });
+    return res.json(req.body);
   }
 }
 
-export default new SessionController();
+export default new RegisterController();

@@ -9,4 +9,10 @@ factory.define('User', User, {
   password: faker.internet.password(8),
 });
 
+export const fakeUser = {
+  name: faker.name.findName(),
+  email: faker.internet.email(),
+  password: faker.internet.password(8),
+};
+
 export default factory;
