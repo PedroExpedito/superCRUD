@@ -1,9 +1,14 @@
 import app from '../../src/app';
 import factory from '../factories';
+import truncate from '../utils/truncate';
 
 const request = require('supertest');
 
 describe('Authentication', () => {
+  beforeEach(async () => {
+    await truncate();
+  });
+
   it('should authenticate with valid credentials', async () => {
     const user = await factory.create('User', {});
 
@@ -16,20 +21,19 @@ describe('Authentication', () => {
     expect(response.status).toBe(200);
   });
 
-  // it('should authenticate with invalid credentials', async () => {
-  //   const user = await factory.create('User', {
-  //     password: '12345678',
-  //   });
-  //
-  //   console.log(user);
-  //   const response = await request(app).post('/sessions').send({
-  //     name: user.name,
-  //     email: user.email,
-  //     password: '123456799',
-  //   });
-  //
-  //   expect(response.status).toBe(401);
-  // });
+  it('should authenticate with invalid credentials', async () => {
+    const user = await factory.create('User', {
+      password: '12345678',
+    });
+
+    const response = await request(app).post('/sessions').send({
+      name: user.name,
+      email: user.email,
+      password: '123456799',
+    });
+
+    expect(response.status).toBe(401);
+  });
 
   // it('should receive JWT token when authenticated with valid credentials', async () => {
   //   const user = await factory.create('User', {

@@ -1,0 +1,101 @@
+yarn run v1.22.4
+$ NODE_ENV=test sequelize db:migrate
+
+[4mSequelize CLI [Node: 14.4.0, CLI: 6.2.0, ORM: 6.3.4][24m
+
+Loaded configuration file "src/config/database.js".
+== 20200716012439-create-users: migrating =======
+== 20200716012439-create-users: migrated (0.030s)
+
+$ NODE_ENV=test jest --detectOpenHandles
+  console.log
+    Database {
+      connection: <ref *1> Sequelize {
+        options: {
+          dialect: 'postgres',
+          dialectModule: null,
+          dialectModulePath: null,
+          host: 'localhost',
+          protocol: 'tcp',
+          define: [Object],
+          query: {},
+          sync: {},
+          timezone: '+00:00',
+          clientMinMessages: 'warning',
+          standardConformingStrings: true,
+          logging: 0,
+          omitNull: false,
+          native: false,
+          replication: false,
+          ssl: undefined,
+          pool: {},
+          quoteIdentifiers: true,
+          hooks: {},
+          retry: [Object],
+          transactionType: 'DEFERRED',
+          isolationLevel: null,
+          databaseVersion: 0,
+          typeValidation: false,
+          benchmark: false,
+          minifyAliases: false,
+          logQueryParameters: false,
+          username: 'postgres',
+          password: 'docker',
+          database: 'tddtest',
+          storage: './__tests__/database.sqlite',
+          operatorsAliases: 0
+        },
+        config: {
+          database: 'tddtest',
+          username: 'postgres',
+          password: 'docker',
+          host: 'localhost',
+          port: 5432,
+          pool: {},
+          protocol: 'tcp',
+          native: false,
+          ssl: undefined,
+          replication: false,
+          dialectModule: null,
+          dialectModulePath: null,
+          keepDefaultTimezone: undefined,
+          dialectOptions: undefined
+        },
+        dialect: PostgresDialect {
+          sequelize: [Circular *1],
+          connectionManager: [ConnectionManager],
+          queryGenerator: [PostgresQueryGenerator],
+          queryInterface: [PostgresQueryInterface]
+        },
+        queryInterface: PostgresQueryInterface {
+          sequelize: [Circular *1],
+          queryGenerator: [PostgresQueryGenerator]
+        },
+        models: { User: User },
+        modelManager: ModelManager { models: [Array], sequelize: [Circular *1] },
+        connectionManager: ConnectionManager {
+          sequelize: [Circular *1],
+          config: [Object],
+          dialect: [PostgresDialect],
+          versionPromise: null,
+          dialectName: 'postgres',
+          pool: [Pool],
+          lib: [PG],
+          nameOidMap: {},
+          enumOids: [Object],
+          oidParserMap: Map(0) {}
+        }
+      }
+    }
+
+      at exports.default (__tests__/utils/truncate.js:4:11)
+
+$ NODE_ENV=test sequelize db:migrate:undo:all
+
+[4mSequelize CLI [Node: 14.4.0, CLI: 6.2.0, ORM: 6.3.4][24m
+
+Loaded configuration file "src/config/database.js".
+== 20200716012439-create-users: reverting =======
+== 20200716012439-create-users: reverted (0.012s)
+
+Done in 13.69s.

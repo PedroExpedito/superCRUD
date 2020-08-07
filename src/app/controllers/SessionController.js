@@ -22,7 +22,7 @@ class SessionController {
       return res.status(404).json({ message: 'user not found' });
     }
 
-    if (user.checkPassword(password)) {
+    if (!(await user.checkPassword(password))) {
       return res.status(401).json({ message: 'invalid password' });
     }
 
