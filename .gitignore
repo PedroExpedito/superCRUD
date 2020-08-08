@@ -4,3 +4,4 @@ runpostgress.sh
 time.txt
 **/*.mkv
 .env
+dist/**/*

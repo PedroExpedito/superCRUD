@@ -26,9 +26,18 @@ bola de neve é grande.
 para se basear**
 
 `git clone https://github.com/PedroExpedito/superCRUD`
-` cd superCRUD`
+`cd superCRUD`
 `yarn` **ou** `npm install`
+`yarn build` **ou** `npm run build`
 `yarn start` **ou** `npm run start`
+
+#### Testes:
+
+`yarn test` **ou** `npm run test`
+
+**você pode executar o `posttest` manualmente para resolver algum eventuais problemas:**
+
+`yarn posttest` **ou** `npm run posttest`
 
 **Pronto!!!**
 
