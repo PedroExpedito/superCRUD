@@ -75,6 +75,28 @@ class RegisterController {
 
     return res.json({ id: req.userId });
   }
+
+  async delete(req, res) {
+    const { password } = req.body;
+
+    if (!password) {
+      return res.status(400).json({ error: 'password not send' });
+    }
+
+    const user = await User.findByPk(req.userId);
+
+    if (!(await user.checkPassword(password))) {
+      return res.status(401).json({ error: 'password incorrect' });
+    }
+
+    try {
+      user.destroy();
+    } catch (err) {
+      res.status(501);
+    }
+
+    return res.json();
+  }
 }
 
 export default new RegisterController();

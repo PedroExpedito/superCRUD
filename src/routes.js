@@ -9,6 +9,7 @@ routes.post('/register', UserController.store);
 
 routes.use(authMiddleware);
 routes.put('/user', UserController.update);
+routes.delete('/user', UserController.delete);
 
 routes.get('/dashboard', (req, res) => res.send());
 

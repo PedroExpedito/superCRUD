@@ -53,4 +53,29 @@ describe('User', () => {
 
     expect(response.status).toBe(200);
   });
+  it('should turn back 400 password not send', async () => {
+    const user = await factory.create('User', {});
+    const response = await request(app).delete('/user').send({
+    }).set({ Authorization: `Bearer ${user.generateToken()}` });
+
+    expect(response.status).toBe(400);
+  });
+  it('should turn back 200 deleted user', async () => {
+    const user = await factory.create('User', {});
+
+    const response = await request(app).delete('/user').send({
+      password: user.password,
+    }).set({ Authorization: `Bearer ${user.generateToken()}` });
+
+    expect(response.status).toBe(200);
+  });
+  it('should turn back 401 password dont match', async () => {
+    const user = await factory.create('User', {});
+
+    const response = await request(app).delete('/user').send({
+      password: 'senhaaleatoria',
+    }).set({ Authorization: `Bearer ${user.generateToken()}` });
+
+    expect(response.status).toBe(401);
+  });
 });

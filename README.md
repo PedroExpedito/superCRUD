@@ -35,7 +35,8 @@ para se basear**
 
 `yarn test` **ou** `npm run test`
 
-**você pode executar o `posttest` manualmente para resolver algum eventuais problemas:**
+**você pode executar o `posttest` manualmente para resolver algum eventual problema com
+as tabelas do DB:**
 
 `yarn posttest` **ou** `npm run posttest`
 

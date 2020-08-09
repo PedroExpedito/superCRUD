@@ -5,3 +5,4 @@ time.txt
 **/*.mkv
 .env
 dist/**/*
+task.md

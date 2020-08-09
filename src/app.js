@@ -1,5 +1,6 @@
 import express from 'express';
 import './app/models';
+import cors from 'cors';
 import routes from './routes';
 
 require('dotenv').config({
@@ -9,8 +10,13 @@ require('dotenv').config({
 class AppController {
   constructor() {
     this.express = express();
+    this.cors();
     this.middlewares();
     this.routes();
+  }
+
+  cors() {
+    this.express.use(cors());
   }
 
   middlewares() {
