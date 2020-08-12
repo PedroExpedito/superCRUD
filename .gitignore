@@ -1,8 +1,8 @@
-__tests__/coverage/**/*
-node_modules
-runpostgress.sh
-time.txt
+**/__tests__/coverage/**/*
+**/node_modules
+**/runpostgress.sh
+**/time.txt
 **/*.mkv
-.env
-dist/**/*
-task.md
+**/.env
+**/dist/**/*
+**/task.md
