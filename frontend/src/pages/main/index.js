@@ -1,25 +1,31 @@
 import React, {useState} from 'react'
+import * as Yup from 'yup';
 import axios from '../../config/axios';
+import { Link } from 'react-router-dom';
 
 export default function Main() {
+  const schema = Yup.object().shape({
+    email: Yup.string().email().required(),
+    password: Yup.string().min(8).max(256),
+  });
   const [ credentials, setCredentials ] = useState({
     email: null,
     password: null,
   });
 
   async function handleOnChange(event) {
-    if (event.target.id === "email") {
-      setCredentials({ ...credentials, email: event.target.value});
-    } else {
-      setCredentials({ ...credentials, password: event.target.value});
-    }
-    console.log(credentials);
-
+    setCredentials({ ...credentials,[event.target.id]: event.target.value});
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
-    if ( credentials.email !== null && credentials.password !== null) {
+    if (await schema.isValid(credentials)){
+      const response = await axios({
+        method: 'post',
+        url: '/sessions',
+        data: credentials,
+      });
+      console.log(response.data);
       alert("ok");
     } else {
       alert("preencha os dados");
@@ -39,7 +45,7 @@ export default function Main() {
         <input type="password" onChange={handleOnChange} id="password" placeholder="password"/>
         <br/>
         <button onClick={handleSubmit} type="submit">login</button>
-        <button>Register</button>
+        <Link to="register"><button> Register</button></Link>
       </form>
     </>
   )
