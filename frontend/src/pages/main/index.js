@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 import * as Yup from 'yup';
 import axios from '../../config/axios';
-import { Link } from 'react-router-dom';
+import { Link,useHistory  } from 'react-router-dom';
 
 export default function Main() {
+  const history = useHistory();
   const schema = Yup.object().shape({
     email: Yup.string().email().required(),
     password: Yup.string().min(8).max(256),
@@ -12,6 +13,8 @@ export default function Main() {
     email: null,
     password: null,
   });
+
+  const [ error, setError ] = useState();
 
   async function handleOnChange(event) {
     setCredentials({ ...credentials,[event.target.id]: event.target.value});
@@ -24,11 +27,16 @@ export default function Main() {
         method: 'post',
         url: '/sessions',
         data: credentials,
+      }).catch( (err) => {
+        setError(err.response.data.message);
+        console.log(err.response);
       });
-      console.log(response.data);
-      alert("ok");
+      if (response) {
+        localStorage.setItem('@super-clud/token',response.data.token);
+        history.push("/dashboard")
+      }
     } else {
-      alert("preencha os dados");
+      setError("preencha os dados");
     }
   }
 
@@ -36,6 +44,8 @@ export default function Main() {
     <>
       <h1>login</h1>
       <form>
+        <label>{error}</label>
+        <br/>
         <label>email:</label>
         <br/>
         <input onChange={handleOnChange} id="email" placeholder="email"/>

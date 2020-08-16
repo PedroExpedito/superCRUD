@@ -1,9 +1,12 @@
 import React, {useState} from 'react'
 import * as Yup from 'yup';
 import axios from '../../config/axios';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 export default function Main() {
+
+  const history = useHistory();
+
   const schema = Yup.object().shape({
     name: Yup.string().min(2).max(256),
     email: Yup.string().email().required(),
@@ -14,6 +17,8 @@ export default function Main() {
     email: null,
     password: null,
   });
+
+  const [ error, setError] = useState();
 
   async function handleOnChange(event) {
     setCredentials({ ...credentials,[event.target.id]: event.target.value});
@@ -26,10 +31,14 @@ export default function Main() {
         method: 'post',
         url: '/register',
         data: credentials,
+      }).catch( (err) => {
+        setError(err.response.data.message);
       });
-      alert("ok");
+      if (response) {
+        history.push('/');
+      }
     } else {
-      alert("preencha os dados");
+      setError("invalid credentials");
     }
   }
 
@@ -37,6 +46,8 @@ export default function Main() {
     <>
       <h1>Register</h1>
       <form>
+        <label>{error}</label>
+        <br/>
         <label>name:</label>
         <br/>
         <input onChange={handleOnChange} id="name" placeholder="name"/>
