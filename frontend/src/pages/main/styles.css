@@ -1,0 +1,37 @@
+h1 {
+  margin-left: 8px;
+}
+button {
+  font-family: arial;
+  color: #14396A !important;
+  font-size: 10px;
+  text-shadow: 2px 1px 0px #7CACDE;
+  box-shadow: 1px 1px 1px #FFF;
+  padding: 10px 25px;
+  border-radius: 2px;
+  border: 0px solid #3866A3;
+  background: #FFF;
+  background: linear-gradient(to top, #63B8EE, #468CCF);
+  margin-left: 8px;
+}
+input {
+  display: flex;
+  border-top: 10px;
+  font-family: arial;
+  color: #14396A !important;
+  font-size: 10px;
+  padding: 10px 25px;
+  border-radius: 0px;
+  border: 0px solid #3866A3;
+  border-top: 20px;
+  border: 0;
+  margin-left: 8px;
+}
+
+label {
+  font-size: 20px;
+  font-style: bold;
+  border-top: 20px;
+  border: 0;
+  margin-left: 8px;
+}

@@ -6,7 +6,6 @@ class SessionController {
     const { email, password } = req.body;
 
     const schema = Yup.object().shape({
-//      name: Yup.string().required().min(2).max(256),
       email: Yup.string().email().required().min(2)
         .max(256),
       password: Yup.string().required().min(8).max(256),
@@ -16,9 +15,7 @@ class SessionController {
       return res.status(400).json({ error: 'Validations fails' });
     }
 
-    console.log("CHEGOU");
     const user = await User.findOne({ where: { email } });
-    console.log("\n\nCHEGOU2");
 
     if (!user) {
       return res.status(404).json({ message: 'user not found' });

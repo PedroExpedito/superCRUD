@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import * as Yup from 'yup';
 import axios from '../../config/axios';
 import { Link,useHistory  } from 'react-router-dom';
+import './styles.css';
 
 export default function Main() {
   const history = useHistory();
@@ -42,21 +43,21 @@ export default function Main() {
 
   return (
     <>
-      <h1>login</h1>
-      <form>
-        <label>{error}</label>
-        <br/>
-        <label>email:</label>
-        <br/>
-        <input onChange={handleOnChange} id="email" placeholder="email"/>
-        <br/>
-        <label>password:</label>
-        <br/>
-        <input type="password" onChange={handleOnChange} id="password" placeholder="password"/>
-        <br/>
-        <button onClick={handleSubmit} type="submit">login</button>
-        <Link to="register"><button> Register</button></Link>
-      </form>
+        <h1>login</h1>
+        <form>
+          <label>{error}</label>
+          <br/>
+          <label>email:</label>
+          <br/>
+          <input onChange={handleOnChange} id="email" placeholder="email"/>
+          <br/>
+          <label>password:</label>
+          <br/>
+          <input type="password" onChange={handleOnChange} id="password" placeholder="password"/>
+          <br/>
+          <button onClick={handleSubmit} type="submit">login</button>
+          <Link to="register"><button> Register</button></Link>
+        </form>
     </>
   )
 }
