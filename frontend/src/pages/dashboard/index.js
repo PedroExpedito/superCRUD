@@ -19,7 +19,7 @@ async function isValid(token) {
 export default function Dashboard() {
   const history = useHistory();
 
-  const token = localStorage.getItem('@super-clud/token');
+  const token = localStorage.getItem('@super-crud/token');
 
   const [ login, setLogin ] = useState({
     label: "you dont authenticated",

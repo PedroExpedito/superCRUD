@@ -33,7 +33,7 @@ export default function Main() {
         console.log(err.response);
       });
       if (response) {
-        localStorage.setItem('@super-clud/token',response.data.token);
+        localStorage.setItem('@super-crud/token',response.data.token);
         history.push("/dashboard")
       }
     } else {
@@ -43,7 +43,7 @@ export default function Main() {
 
   return (
     <>
-        <h1>login</h1>
+        <h1>Login</h1>
         <form>
           <label>{error}</label>
           <br/>
