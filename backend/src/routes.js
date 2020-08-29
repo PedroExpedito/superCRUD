@@ -5,6 +5,11 @@ import DashboardController from './app/controllers/DashboardController';
 
 const routes = require('express').Router();
 
+routes.get('/', (req, res) => {
+  const remoteIp = req.ip;
+  return res.send(remoteIp);
+});
+
 routes.post('/sessions', SessionController.store);
 routes.post('/register', UserController.store);
 

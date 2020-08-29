@@ -2,8 +2,8 @@
 
 ### Oque é o SuperCRUD ?
 
-É um CRUD que busca ser simples e fácil compreensão e orientado a testes o TDD
-(Test-driven development)
+É um CRUD que busca ser simples e de fácil compreensão,orientado a testes o
+famoso TDD (Test-driven development)
 
 ### Backend:
   O backend foi feito em nodejs seguindo totalmente a filosofia do TDD e na
