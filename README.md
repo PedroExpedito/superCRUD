@@ -11,7 +11,7 @@ famoso TDD (Test-driven development)
   executar.
 
 ### Frontend:
-  Eu tive um pouco de dificulta de entender como eram feitos os testes das
+  Eu tive um pouco de dificuldade de entender como eram feitos os testes das
   telas e resolvi escrever primeiro as telas e depois os testes e ainda não
   terminei, serve de treino de como dar manutenção.
 
