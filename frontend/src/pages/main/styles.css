@@ -1,5 +1,5 @@
-h1 {
-  margin-left: 8px;
+div {
+  text-align: center;
 }
 button {
   font-family: arial;
@@ -15,8 +15,6 @@ button {
   margin-left: 8px;
 }
 input {
-  display: flex;
-  border-top: 10px;
   font-family: arial;
   color: #14396A !important;
   font-size: 10px;
@@ -25,13 +23,10 @@ input {
   border: 0px solid #3866A3;
   border-top: 20px;
   border: 0;
-  margin-left: 8px;
 }
 
 label {
   font-size: 20px;
   font-style: bold;
-  border-top: 20px;
-  border: 0;
   margin-left: 8px;
 }

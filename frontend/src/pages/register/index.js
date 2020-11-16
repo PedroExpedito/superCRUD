@@ -41,6 +41,9 @@ export default function Main() {
       setError("invalid credentials");
     }
   }
+  function handleBack() {
+    history.push('/');
+  }
 
   return (
     <>
@@ -60,6 +63,7 @@ export default function Main() {
         <br/>
         <input type="password" onChange={handleOnChange} id="password" placeholder="password"/>
         <br/>
+        <button onClick={handleBack}>Back</button>
         <button onClick={handleSubmit} type="submit">register</button>
       </form>
     </>

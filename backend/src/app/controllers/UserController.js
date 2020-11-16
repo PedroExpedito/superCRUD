@@ -77,15 +77,17 @@ class RegisterController {
   }
 
   async delete(req, res) {
-    const { password } = req.body;
+    const { password, id } = req.body;
 
+    console.log(password);
     if (!password) {
       return res.status(400).json({ error: 'password not send' });
     }
 
-    const user = await User.findByPk(req.userId);
+    const user = await User.findByPk(id);
 
     if (!(await user.checkPassword(password))) {
+      console.log(password);
       return res.status(401).json({ error: 'password incorrect' });
     }
 

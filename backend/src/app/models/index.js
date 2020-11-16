@@ -12,6 +12,12 @@ class Database {
   async init() {
     this.connection = new Sequelize(DbConfig);
 
+    try {
+      await this.connection.authenticate();
+    } catch (err) {
+      console.log(`\n\n CONECTION DB ERROR \n\n ${err}`);
+    }
+
     /*
     File.init(this.connection);
     User.associate(this.connection.models);

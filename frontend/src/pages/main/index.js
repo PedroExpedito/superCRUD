@@ -43,21 +43,23 @@ export default function Main() {
 
   return (
     <>
+      <div>
         <h1>Login</h1>
         <form>
           <label>{error}</label>
           <br/>
-          <label>email:</label>
+          <label><strong>email:</strong></label>
           <br/>
-          <input onChange={handleOnChange} id="email" placeholder="email"/>
+          <input autoComplete="email" onChange={handleOnChange} id="email" placeholder="email"/>
           <br/>
-          <label>password:</label>
+          <label><strong>password:</strong></label>
           <br/>
-          <input type="password" onChange={handleOnChange} id="password" placeholder="password"/>
+          <input type="password" autoComplete="current-password" onChange={handleOnChange} id="password" placeholder="password"/>
           <br/>
           <button onClick={handleSubmit} type="submit">login</button>
           <Link to="register"><button> Register</button></Link>
         </form>
+      </div>
     </>
   )
 }
